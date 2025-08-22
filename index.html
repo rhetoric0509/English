@@ -3,46 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>레토릭 영어 | 상담 메시지 자동작성 · 오픈채팅 안내</title>
-<meta name="description" content="레토릭 영어 상담 메시지를 자동으로 작성·복사하고, 카카오 오픈채팅으로 연결하는 안내 페이지입니다.">
-<meta property="og:title" content="레토릭 영어 | 상담 바로 연결">
-<meta property="og:description" content="메시지 자동작성 → 복사 → 오픈채팅 열기 (모바일/PC 모두 지원)">
-<meta property="og:type" content="website">
+<title>레토릭 영어 | 사용 방법 안내 포함 (오픈채팅·문자)</title>
+<meta name="description" content="입력 30초로 상담 메시지를 자동 작성하고, 오픈채팅(복사·붙여넣기) 또는 문자(바로 작성)로 연결합니다. 상단에 단계별 사용 방법 안내 포함.">
 <meta name="theme-color" content="#0A1027">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0A1027;
-    --card: #11183A;
-    --ink: #EAF0FF;
-    --muted: #9AA6D9;
-    --line: #263064;
-    --accent: #5E7BFF;
-    --accent2: #1DE9B6;
-    --danger: #FF6B6B;
+    --bg: #0A1027; --card:#11183A; --ink:#EAF0FF; --muted:#9AA6D9; --line:#263064;
+    --accent:#5E7BFF; --accent2:#1DE9B6; --warning:#FFD166;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{margin:0;background:
-    radial-gradient(1200px 1200px at 80% -10%, #2641FF22 0%, transparent 60%),
-    radial-gradient(1200px 1200px at 10% 110%, #00BFA633 0%, transparent 60%),
-    linear-gradient(180deg, #070B1D 0%, #0A1027 100%);
+  body{
+    margin:0;background:
+      radial-gradient(1200px 1200px at 80% -10%, #2641FF22 0%, transparent 60%),
+      radial-gradient(1200px 1200px at 10% 110%, #00BFA633 0%, transparent 60%),
+      linear-gradient(180deg, #070B1D 0%, #0A1027 100%);
     font-family:'Pretendard','Noto Sans KR',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Malgun Gothic',sans-serif;
     color:var(--ink);
   }
   .wrap{max-width:980px;margin:36px auto;padding:0 18px}
   .hero{display:flex;flex-direction:column;gap:14px;align-items:flex-start;margin-bottom:18px}
   .brand{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.2px;
-          background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted);}
+          background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;
+          padding:8px 14px;font-size:13px;color:var(--muted);}
   .title{font-size:clamp(28px,4.8vw,42px);font-weight:800;line-height:1.25;margin:0}
   .subtitle{font-size:clamp(14px,2.6vw,16px);color:var(--muted);margin:2px 0 0}
+
   .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
   @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+
   .card{background:linear-gradient(180deg,#10193D,#0E1534);border:1px solid var(--line);border-radius:18px;
          box-shadow:0 18px 48px rgba(0,0,0,.22);padding:20px 20px 18px}
   .card h2{margin:6px 0 10px;font-size:18px;letter-spacing:.2px}
+
   label{display:block;margin:12px 0 6px;font-weight:600;font-size:14px;color:#C6D0FF}
   input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#0D1433;color:var(--ink);
                        font-size:16px;outline:none}
@@ -50,31 +46,58 @@
   textarea{min-height:168px;resize:vertical}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media (max-width:560px){ .row{grid-template-columns:1fr} }
+
   .btnbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
   .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#0D1433;border-radius:12px;
         padding:12px 16px;font-size:14px;font-weight:800;color:var(--ink);cursor:pointer;text-decoration:none;transition:transform .06s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.alt{background:var(--accent2);border-color:var(--accent2);color:#042B24}
   .btn.ghost{background:transparent}
+
   .hint{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .list{display:grid;gap:8px;margin:6px 0 0;font-size:14px;color:#C6D0FF}
+  .list{display:grid;gap:6px;margin:6px 0 0;font-size:13px;color:#C6D0FF}
   .ok{color:#7CFFBA;font-weight:800}
   .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%, 40px);background:#141C45;border:1px solid var(--line);
          color:#EAF0FF;padding:12px 14px;border-radius:12px;box-shadow:0 10px 22px rgba(0,0,0,.3);
          transition:transform .28s ease, opacity .28s ease; opacity:0; z-index:9999}
   .toast.show{transform:translate(-50%, 0);opacity:1}
-  .faq{display:grid;gap:10px}
-  details{background:#0D1433;border:1px solid var(--line);border-radius:12px;padding:12px}
-  summary{cursor:pointer;font-weight:800;color:#EAF0FF}
-  small.note{display:block;color:#97A7E3;margin-top:6px}
+
+  .channels{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:560px){ .channels{grid-template-columns:1fr} }
+
+  /* Step Guide */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+  @media (max-width:900px){ .steps{grid-template-columns:1fr} }
+  .step{display:grid;gap:8px;background:linear-gradient(180deg,#0F1638,#0E1534);border:1px solid var(--line);
+        border-radius:14px;padding:14px}
+  .step h3{margin:0;font-size:15px}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;border:1px solid var(--line);color:#C6D0FF}
+  .flow{font-size:12px;color:#C6D0FF}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="hero">
       <span class="brand">Rhetoric English · 상담</span>
-      <h1 class="title">상담 메시지 자동작성 → <span style="color:var(--accent2)">오픈채팅</span> 바로 연결</h1>
-      <p class="subtitle">입력 30초 · 복사 1클릭 · https://open.kakao.com/o/s9MVp3Kh 열기 — 모바일/PC 모두 지원</p>
+      <h1 class="title">오픈채팅은 복사·붙여넣기, 문자는 바로 작성</h1>
+      <p class="subtitle">입력 30초 → 자동 메시지 → 채널별 권장 흐름으로 안내</p>
+    </div>
+
+    <!-- 사용 방법 안내: 한눈에 보는 3단계 -->
+    <div class="steps">
+      <div class="step">
+        <h3>① 입력폼 작성</h3>
+        <div class="flow">학생/학년/목표 등을 입력합니다.</div>
+      </div>
+      <div class="step">
+        <h3>② 자동완성 클릭</h3>
+        <div class="flow">입력한 내용으로 상담 메시지가 자동 생성됩니다.</div>
+      </div>
+      <div class="step">
+        <h3>③ 전송 방법 선택</h3>
+        <div class="flow">오픈채팅(복사·붙여넣기) 또는 문자(바로 작성)로 보냅니다.</div>
+      </div>
     </div>
 
     <div class="grid">
@@ -106,37 +129,46 @@
       </div>
 
       <div class="card" aria-labelledby="compose-title">
-        <h2 id="compose-title">2) 메시지 자동작성 · 복사 · 오픈채팅</h2>
+        <h2 id="compose-title">2) 메시지 자동작성 · 채널 선택</h2>
         <label for="msg">메시지 미리보기</label>
         <textarea id="msg" placeholder="버튼을 누르면 자동 완성됩니다."></textarea>
         <div class="btnbar">
           <button class="btn" onclick="compose()">✍️ 자동 완성</button>
           <button class="btn" onclick="copyMsg()">📋 복사</button>
-          <a class="btn primary" id="goChat" href="https://open.kakao.com/o/s9MVp3Kh" target="_blank" rel="noopener">💬 오픈채팅 열기</a>
-          <button class="btn ghost" onclick="copyThenOpen()">복사 후 열기</button>
         </div>
-        <div class="hint">
-          • 카카오 정책상 오픈채팅에 <b>자동 입력/전송</b>은 불가합니다.<br>
-          • 흐름: <b>메시지 자동작성</b> → <b>복사</b> → <b>오픈채팅 열기</b> → 붙여넣기 → 전송
+
+        <div class="channels">
+          <div>
+            <h3>💬 오픈채팅으로 상담 <span class="badge">복사·붙여넣기</span></h3>
+            <div class="list flow">
+              <div>1) 자동작성 → 2) <b>복사</b> → 3) <b>오픈채팅 열기</b> → 4) 붙여넣기 → 5) 전송</div>
+            </div>
+            <div class="btnbar">
+              <button class="btn primary" onclick="copyThenOpen()">복사 후 오픈채팅 열기</button>
+              <a class="btn ghost" id="goChat" href="https://open.kakao.com/o/s9MVp3Kh" target="_blank" rel="noopener">오픈채팅만 열기</a>
+            </div>
+            <div class="hint">※ 채팅창 자동 입력/전송은 지원되지 않습니다.</div>
+          </div>
+          <div>
+            <h3>✉️ 문자(SMS)로 상담 <span class="badge">바로 작성</span></h3>
+            <div class="list flow">
+              <div>1) 자동작성 → 2) <b>문자 앱 열기</b> → 3) <b>전송만 탭</b></div>
+            </div>
+            <div class="btnbar">
+              <button class="btn alt" id="smsBtn">문자 앱 열기</button>
+              <a class="btn ghost" href="tel:050713715793">전화 걸기</a>
+            </div>
+            <div class="hint">모바일에서 번호/본문이 자동 입력됩니다. (전송 버튼은 직접 탭)</div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="card" style="margin-top:16px" aria-labelledby="faq-title">
       <h2 id="faq-title">자주 묻는 질문(FAQ)</h2>
-      <div class="faq">
-        <details>
-          <summary>모바일에서 자동 붙여넣기 되나요?</summary>
-          <div class="hint">일부 기기·브라우저는 앱 전환 시 붙여넣기 제안을 보여줄 수 있습니다. 보이지 않는 경우 대화창에서 길게 눌러 붙여넣기 하시면 됩니다.</div>
-        </details>
-        <details>
-          <summary>PC에서는 어떻게 하나요?</summary>
-          <div class="hint">복사 후 카카오톡 PC 대화창에서 <span class="ok">Ctrl/⌘ + V</span> 하면 바로 전송할 수 있습니다.</div>
-        </details>
-        <details>
-          <summary>왜 자동 전송이 안 되나요?</summary>
-          <div class="hint">오픈채팅은 보안/스팸 방지 정책상 URL 파라미터나 스크립트로 메시지 자동 입력·전송을 허용하지 않습니다.</div>
-        </details>
+      <div class="hint">
+        • 오픈채팅은 보안/스팸 방지로 자동 입력·전송이 제한됩니다. 복사→붙여넣기 흐름을 사용하세요.<br>
+        • SMS 링크는 모바일 기기에서 동작하며, 일부 기기/브라우저에서는 지원이 다를 수 있습니다.
       </div>
     </div>
   </div>
@@ -144,6 +176,9 @@
   <div id="toast" class="toast" role="status" aria-live="polite">메시지를 클립보드에 복사했어요.</div>
 
 <script>
+const OPENCHAT_URL = 'https://open.kakao.com/o/s9MVp3Kh';
+const SMS_NUMBER = '050713715793';
+
 function compose(){
   const name = (document.getElementById('name').value||'').trim();
   const grade = (document.getElementById('grade').value||'').trim();
@@ -159,7 +194,7 @@ function compose(){
   if(time) lines.push(`- 상담 가능 시간: ${time}`);
   lines.push('가능하신 상담 시간 및 준비 자료 안내 부탁드립니다.');
 
-  document.getElementById('msg').value = lines.join('\n');
+  document.getElementById('msg').value = lines.join('\\n');
   showToast('메시지를 자동으로 작성했어요.');
 }
 
@@ -174,10 +209,27 @@ async function copyMsg(){
   }
 }
 
-async function copyThenOpen(){
-  await copyMsg();
-  window.open('https://open.kakao.com/o/s9MVp3Kh', '_blank');
+function copyThenOpen(){
+  const el = document.getElementById('msg');
+  if(!el.value.trim()) compose();
+  copyMsg().then(()=>{
+    window.open(OPENCHAT_URL, '_blank');
+  });
 }
+
+function openSMS(){
+  const el = document.getElementById('msg');
+  if(!el.value.trim()) compose();
+  const body = encodeURIComponent(el.value);
+  const ua = navigator.userAgent || '';
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const href = isIOS
+    ? `sms:${SMS_NUMBER}&body=${body}`
+    : `sms:${SMS_NUMBER}?body=${body}`;
+  location.href = href;
+}
+
+document.getElementById('smsBtn').addEventListener('click', openSMS);
 
 function showToast(msg){
   const t = document.getElementById('toast');
